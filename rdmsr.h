@@ -10,7 +10,7 @@
 
 #if __x86_64
 
-/* Execute privileged rdmsr instruction via inline-assembly 
+/* Execute privileged rdmsr instruction via inline-assembly
 
    This instruction reads the "Model Specific Register" on x86.
 	Not all register ids are present on all CPUs.
@@ -28,7 +28,7 @@ static inline uint64_t __assembly_rdmsr(uint64_t msr_id)
 
 	MSR_SYSCALLTABLE_COMPAT: Where is my syscall table?
 		check: $ sudo grep entry_SYSCALL_compat /proc/kallsyms
-	
+
 	MSR_MICROCODE_VERSION: Which patchlevel has my CPU microcode?
 		(print as hex number, drop lower 8 digits (32 bytes))
 		check: $ grep microcode /proc/cpuinfo
@@ -38,7 +38,7 @@ static inline uint64_t __assembly_rdmsr(uint64_t msr_id)
 
 	For more, read: http://sandpile.org/x86/msr.htm (outdated, and model-specific)
 */
-#define MSR_MICROCODE_VERSION   0x0000008b 
+#define MSR_MICROCODE_VERSION   0x0000008b
 #define MSR_SYSCALLTABLE_COMPAT 0xC0000083
 #define MSR_TIMESTAMP_COUNTER   0x00000010
 
